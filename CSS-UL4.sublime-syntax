@@ -1,0 +1,12 @@
+%YAML 1.2
+---
+name: CSS (UL4)
+file_extensions: [cssul4]
+scope: embedding.css.ul4
+
+contexts:
+  main:
+    - match: ''
+      push: 'scope:source.css'
+      with_prototype:
+        - include: 'scope:source.ul4'

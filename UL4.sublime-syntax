@@ -1,0 +1,382 @@
+%YAML 1.2
+---
+name: UL4
+file_extensions: [ul4]
+first_line_match: <\?\s*ul4\s+.*\?>
+scope: source.ul4
+
+contexts:
+  main:
+    - match: (<\?)\s*(ul4)\s+([a-zA-Z_][a-zA-Z_0-9]*)?\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.function.ul4
+      push: tag_ul4
+
+    - match: (<\?)\s*(doc)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_doc
+
+    - match: (<\?)\s*(note)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_note
+
+    - match: (<\?)\s*(whitespace)\s+((keep|strip|smart)|(.*))(\?>)
+      scope: meta.embedded.block.ul4.whitespace
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        4: support.constant.ul4
+        5: invalid.illegal.ul4
+        6: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s*(\?>)
+      scope: meta.embedded.block.ul4.end
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(def)(\?>)
+      scope: meta.embedded.block.ul4.end.def
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(for)(\?>)
+      scope: meta.embedded.block.ul4.end.for
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(if)(\?>)
+      scope: meta.embedded.block.ul4.endif.
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(while)(\?>)
+      scope: meta.embedded.block.ul4.end.while
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(.*)(\?>)
+      scope: meta.embedded.block.ul4.end
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: invalid.illegal.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(def)\s+([a-zA-Z_][a-zA-Z_0-9]*)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.function.ul4
+      push: tag_def
+
+    - match: (<\?)\s*(printx)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_printx
+
+    - match: (<\?)\s*(print)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_print
+
+    - match: (<\?)\s*(for)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_for
+
+    - match: (<\?)\s*(if)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_if
+
+    - match: (<\?)\s*(elif)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_elif
+
+    - match: (<\?)\s*(else)\s*(\?>)
+      scope: meta.embedded.block.ul4.else
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(break)\s*(\?>)
+      scope: meta.embedded.block.ul4.break
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(continue)\s*(\?>)
+      scope: meta.embedded.block.ul4.continue
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(render)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_render
+
+    - match: (<\?)\s*(return)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_return
+
+    - match: (<\?)\s*(code)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_code
+
+  expr:
+    - match: \b([0-9]+)\b
+      captures:
+        1: constant.numeric.integer.ul4
+
+    - match: \b(0o[0-9]+)\b
+      captures:
+        1: constant.numeric.octal.ul4
+
+    - match: \b(0x[0-9a-fA-F]+)\b
+      captures:
+        1: constant.numeric.hex.ul4
+
+    - match: \b(0b[01]+)\b
+      captures:
+        1: constant.numeric.bin.ul4
+
+    - match: \b([0-9]+\.[0-9]*[eE][+-]?[0-9]+)\b
+      captures:
+        1: constant.numeric.float.ul4
+
+    - match: \b(\.[0-9]+[eE][+-]?[0-9]+)?\b
+      captures:
+        1: constant.numeric.float.ul4
+
+    - match: \b([0-9]+[eE][+-]?[0-9]+)\b
+      captures:
+        1: constant.numeric.float.ul4
+
+    - match: (#[0-9a-fA-F]{8})\b
+      captures:
+        1: constant.other.color.rgb-value.ul4
+
+    - match: (#[0-9a-fA-F]{6})\b
+      captures:
+        1: constant.other.color.rgb-value.ul4
+
+    - match: (#[0-9a-fA-F]{3,4})\b
+      captures:
+        1: constant.other.color.rgb-value.ul4
+
+    - match: (@\(\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(\d{2}(\.\d{6})?)?)?\))
+      captures:
+        1: constant.other.date.ul4
+
+    - match: \b(and|or|not|is|in|if|else|for)\b
+      captures:
+        1: keyword.operator.logical.ul4
+
+    - match: \b(None)\b
+      captures:
+        1: constant.language.none.ul4
+
+    - match: \b(True|False)\b
+      captures:
+        1: constant.language.bool.ul4
+
+    - match: (\+|-|\*|//|/|%)
+      captures:
+        1: keyword.operator.arithmetic.ul4
+
+    - match: (==|!=|<|<=|>|>=)
+      captures:
+        1: keyword.operator.comparison.ul4
+
+    - match: \b(range)\b
+      captures:
+        1: entity.name.function.ul4
+
+    - match: "'''"
+      push: tristring1
+
+    - match: '"""'
+      push: tristring2
+
+    - match: "'"
+      push: string1
+
+    - match: '"'
+      push: string2
+
+  tag_doc:
+    - meta_scope: comment.block.documentation.ul4, meta.embedded.block.ul4.doc
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_note:
+    - meta_scope: comment.block.ul4, meta.embedded.block.ul4.note
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_ul4:
+    - meta_scope: meta.embedded.block.ul4.ul4
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_for:
+    - meta_scope: meta.embedded.block.ul4.for
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_def:
+    - meta_scope: meta.embedded.block.ul4.def
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_printx:
+    - meta_scope: meta.embedded.block.ul4.printx
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_print:
+    - meta_scope: meta.embedded.block.ul4.print
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_if:
+    - meta_scope: meta.embedded.block.ul4.if
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_elif:
+    - meta_scope: meta.embedded.block.ul4.elif
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_render:
+    - meta_scope: meta.embedded.block.ul4.render
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_return:
+    - meta_scope: meta.embedded.block.ul4.return
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_code:
+    - meta_scope: meta.embedded.block.ul4.code
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  stringescape:
+    - match: \\\\
+      scope: constant.character.escape.backslash.ul4
+    - match: \\U[0-9a-fA-F]{8}
+      scope: constant.character.escape.hex8.ul4
+    - match: \\U.{8}
+      scope: invalid.illegal.escape.hex8.ul4
+    - match: \\u[0-9a-fA-F]{4}
+      scope: constant.character.escape.hex4.ul4
+    - match: \\u.{4}
+      scope: invalid.illegal.escape.hex4.ul4
+    - match: \\x[0-9a-fA-F]{2}
+      scope: constant.character.escape.hex2.ul4
+    - match: \\x..
+      scope: invalid.illegal.escape.hex2.ul4
+    - match: \\[abtnfr]
+      scope: constant.character.escape.char.ul4
+    - match: '\\"'
+      scope: constant.character.escape.quote.ul4
+    - match: "\\\\'"
+      scope: constant.character.escape.quote.ul4
+    - match: \\.
+      scope: invalid.illegal.escape.char.ul4
+
+  tristring1:
+    - meta_scope: string.quoted.triple.ul4
+    - include: stringescape
+    - match: "'''"
+      pop: true
+
+  tristring2:
+    - meta_scope: string.quoted.triple.ul4
+    - include: stringescape
+    - match: '"""'
+      pop: true
+
+  string1:
+    - meta_scope: string.quoted.single.ul4
+    - include: stringescape
+    - match: "'"
+      pop: true
+
+  string2:
+    - meta_scope: string.quoted.double.ul4
+    - include: stringescape
+    - match: '"'
+      pop: true

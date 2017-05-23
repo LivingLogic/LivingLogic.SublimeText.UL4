@@ -1,0 +1,12 @@
+%YAML 1.2
+---
+name: JavaScript (UL4)
+file_extensions: [jsul4]
+scope: embedding.js.ul4
+
+contexts:
+  main:
+    - match: ''
+      push: 'scope:source.js'
+      with_prototype:
+        - include: 'scope:source.ul4'
