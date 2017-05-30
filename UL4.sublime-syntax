@@ -223,9 +223,9 @@ contexts:
       captures:
         1: keyword.operator.comparison.ul4
 
-    - match: \b(range)\b
+    - match: \b(abs|all|any|ascii|asjson|asul4on|bin|bool|ceil|chr|cos|csv|date|enumerate|enumfl|exp|first|float|floor|format|fromjson|fromul4on|hex|hls|hsv|int|isbool|iscolor|isdate|isdefined|isdict|isexception|isfirst|isfirstlast|isfloat|isfunction|isint|islast|islist|ismonthdelta|isnone|isset|isstr|istemplate|istimedelta|isundefined|last|len|list|log|max|md5|min|monthdelta|now|oct|ord|pi|pow|randchoice|random|randrange|range|repr|reversed|rgb|round|set|sin|slice|sorted|sqrt|str|sum|tan|tau|timedelta|type|urlquote|urlunquote|utcnow|xmlescape|zip)\b
       captures:
-        1: entity.name.function.ul4
+        1: variable.function.ul4
 
     - match: "'''"
       push: tristring1
