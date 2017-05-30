@@ -1,7 +1,7 @@
 {
 	"name": "UL4",
 	"version": "0.3.0",
-	"description": "UL4 syntax highlighting for Sublime Text",
+	"description": "UL4 syntax highlighting for Sublime Text 3",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/LivingLogic/LivingLogic.SublimeText.UL4"
