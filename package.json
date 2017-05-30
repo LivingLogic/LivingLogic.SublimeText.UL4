@@ -1,0 +1,11 @@
+{
+	"name": "UL4",
+	"version": "0.3.0",
+	"description": "UL4 syntax highlighting for Sublime Text",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LivingLogic/LivingLogic.SublimeText.UL4"
+	},
+	"author": "Walter Doerwald",
+	"license": "MIT"
+}
