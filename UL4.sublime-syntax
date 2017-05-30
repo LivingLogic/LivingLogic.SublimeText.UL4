@@ -59,7 +59,7 @@ contexts:
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(if)(\?>)
-      scope: meta.embedded.block.ul4.endif.
+      scope: meta.embedded.block.ul4.endif
       captures:
         1: punctuation.section.embedded.begin.ul4
         2: entity.name.tag.ul4
