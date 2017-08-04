@@ -107,6 +107,12 @@ contexts:
         2: entity.name.tag.ul4
       push: tag_for
 
+    - match: (<\?)\s*(while)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_while
+
     - match: (<\?)\s*(if)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
@@ -263,6 +269,14 @@ contexts:
 
   tag_for:
     - meta_scope: meta.embedded.block.ul4.for
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_while:
+    - meta_scope: meta.embedded.block.ul4.white
     - include: expr
     - match: (\?>)
       captures:
