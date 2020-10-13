@@ -50,6 +50,22 @@ contexts:
         3: entity.name.tag.ul4
         4: punctuation.section.embedded.end.ul4
 
+    - match: (<\?)\s*(end)\s+(renderblock)(\?>)
+      scope: meta.embedded.block.ul4.end.renderblock
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
+    - match: (<\?)\s*(end)\s+(renderblocks)(\?>)
+      scope: meta.embedded.block.ul4.end.renderblocks
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
     - match: (<\?)\s*(end)\s+(for)(\?>)
       scope: meta.embedded.block.ul4.end.for
       captures:
@@ -88,6 +104,18 @@ contexts:
         2: entity.name.tag.ul4
         3: entity.name.function.ul4
       push: tag_def
+
+    - match: (<\?)\s*(renderblock)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_renderblock
+
+    - match: (<\?)\s*(renderblocks)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_renderblocks
 
     - match: (<\?)\s*(printx)\b
       captures:
@@ -223,9 +251,13 @@ contexts:
       captures:
         1: keyword.operator.comparison.ul4
 
-    - match: \b(range)\b
+    - match: \b(now|utcnow|today|date|datetime|timedelta|monthdelta|random|xmlescape|csv|str|repr|ascii|int|float|bool|list|set|len|any|all|enumerate|enumfl|isfirstlast|isfirst|islast|isundefined|isdefined|isnone|isstr|isint|isfloat|isbool|isdate|isdatetime|islist|isset|isdict|istemplate|isfunction|iscolor|istimedelta|ismonthdelta|isexception|chr|ord|hex|oct|bin|abs|range|slice|min|max|sum|first|last|sorted|type|asjson|fromjson|asul4on|fromul4on|reversed|randrange|randchoice|format|urlquote|urlunquote|zip|rgb|hls|hsv|round|md5|scrypt|getattr|hasattr|setattr|dir)\b
       captures:
-        1: entity.name.function.ul4
+        1: support.function.ul4
+
+    - match: \b(ul4on)\b
+      captures:
+        1: support.module.ul4
 
     - match: "'''"
       push: tristring1
@@ -271,6 +303,22 @@ contexts:
 
   tag_def:
     - meta_scope: meta.embedded.block.ul4.def
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_renderblock:
+    - meta_scope: meta.embedded.block.ul4.renderblock
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_renderblocks:
+    - meta_scope: meta.embedded.block.ul4.renderblocks
     - include: expr
     - match: (\?>)
       captures:
@@ -358,25 +406,25 @@ contexts:
       scope: invalid.illegal.escape.char.ul4
 
   tristring1:
-    - meta_scope: string.quoted.triple.ul4
+    - meta_scope: meta.string, string.quoted.triple.ul4
     - include: stringescape
     - match: "'''"
       pop: true
 
   tristring2:
-    - meta_scope: string.quoted.triple.ul4
+    - meta_scope: meta.string, string.quoted.triple.ul4
     - include: stringescape
     - match: '"""'
       pop: true
 
   string1:
-    - meta_scope: string.quoted.single.ul4
+    - meta_scope: meta.string, string.quoted.single.ul4
     - include: stringescape
     - match: "'"
       pop: true
 
   string2:
-    - meta_scope: string.quoted.double.ul4
+    - meta_scope: meta.string, string.quoted.double.ul4
     - include: stringescape
     - match: '"'
       pop: true
