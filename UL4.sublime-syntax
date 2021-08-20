@@ -11,34 +11,34 @@ contexts:
     - match: (<\?)\s*(ul4)\s+([a-zA-Z_][a-zA-Z_0-9]*)?\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.signature.ul4
         3: entity.name.function.ul4
       push: tag_ul4
 
     - match: (<\?)\s*(doc)\b
       captures:
-        1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        1: punctuation.definition.comment.ul4
+        2: comment.block.documentation.doc.ul4
       push: tag_doc
 
     - match: (<\?)\s*(note)\b
       captures:
-        1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        1: punctuation.definition.comment.ul4
+        2: comment.block.note.ul4
       push: tag_note
 
     - match: (<\?)\s*(ignore)\s*(\?>)
       captures:
-        1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: punctuation.section.embedded.end.ul4
+        1: punctuation.definition.comment.ul4
+        2: comment.block.ignore.ul4
+        3: punctuation.definition.comment.ul4
       push: tag_ignore
 
     - match: (<\?)\s*(whitespace)\s+((keep|strip|smart)|(.*))(\?>)
       scope: meta.embedded.block.ul4.whitespace
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.whitespace.ul4
         4: support.constant.ul4
         5: invalid.illegal.ul4
         6: punctuation.section.embedded.end.ul4
@@ -47,171 +47,171 @@ contexts:
       scope: meta.embedded.block.ul4.end
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.end.ul4
         3: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(def)(\?>)
       scope: meta.embedded.block.ul4.end.def
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.def.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(renderblock)(\?>)
       scope: meta.embedded.block.ul4.end.renderblock
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.renderblock.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(renderblocks)(\?>)
       scope: meta.embedded.block.ul4.end.renderblocks
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.renderblocks.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(for)(\?>)
       scope: meta.embedded.block.ul4.end.for
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.for.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(while)(\?>)
       scope: meta.embedded.block.ul4.end.while
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.while.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(if)(\?>)
       scope: meta.embedded.block.ul4.endif.
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.if.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(while)(\?>)
       scope: meta.embedded.block.ul4.end.while
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
-        3: entity.name.tag.ul4
+        2: keyword.control.end.ul4
+        3: keyword.control.while.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(end)\s+(.*)(\?>)
       scope: meta.embedded.block.ul4.end
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.end.ul4
         3: invalid.illegal.ul4
         4: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(def)\s+([a-zA-Z_][a-zA-Z_0-9]*)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.def.ul4
         3: entity.name.function.ul4
       push: tag_def
 
     - match: (<\?)\s*(renderblock)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.renderblock.ul4
       push: tag_renderblock
 
     - match: (<\?)\s*(renderblocks)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.renderblocks.ul4
       push: tag_renderblocks
 
     - match: (<\?)\s*(printx)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.printx.ul4
       push: tag_printx
 
     - match: (<\?)\s*(print)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.print.ul4
       push: tag_print
 
     - match: (<\?)\s*(for)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.for.ul4
       push: tag_for
 
     - match: (<\?)\s*(while)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.while.ul4
       push: tag_while
 
     - match: (<\?)\s*(if)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.if.ul4
       push: tag_if
 
     - match: (<\?)\s*(elif)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.elif.ul4
       push: tag_elif
 
     - match: (<\?)\s*(else)\s*(\?>)
       scope: meta.embedded.block.ul4.else
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.else.ul4
         3: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(break)\s*(\?>)
       scope: meta.embedded.block.ul4.break
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.break.ul4
         3: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(continue)\s*(\?>)
       scope: meta.embedded.block.ul4.continue
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.continue.ul4
         3: punctuation.section.embedded.end.ul4
 
     - match: (<\?)\s*(renderx)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.renderx.ul4
       push: tag_renderx
 
     - match: (<\?)\s*(render)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.render.ul4
       push: tag_render
 
     - match: (<\?)\s*(return)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.control.return.ul4
       push: tag_return
 
     - match: (<\?)\s*(code)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
-        2: entity.name.tag.ul4
+        2: keyword.other.code.ul4
       push: tag_code
 
   expr:
@@ -303,31 +303,31 @@ contexts:
     - meta_scope: comment.block.documentation.ul4, meta.embedded.block.ul4.doc
     - match: (\?>)
       captures:
-        1: punctuation.section.embedded.end.ul4
+        1: punctuation.definition.comment.ul4
       pop: true
 
   tag_note:
     - meta_scope: comment.block.ul4, meta.embedded.block.ul4.note
     - match: (\?>)
       captures:
-        1: punctuation.section.embedded.end.ul4
+        1: punctuation.definition.comment.ul4
       pop: true
 
   tag_ignore:
     - meta_scope: comment.block.ignore.ul4
     - match: (<\?)\s*(ignore)\s*(\?>)
       captures:
-        1: punctuation.section.embedded.begin.ul4
+        1: punctuation.definition.comment.ul4
         2: entity.tag.name
-        3: punctuation.section.embedded.end.ul4
+        3: punctuation.definition.comment.ul4
       push: tag_ignore
 
     - match: (<\?)\s*(end)\s+(ignore)\s*(\?>)
       captures:
-        1: punctuation.section.embedded.begin.ul4
+        1: punctuation.definition.comment.ul4
         2: entity.tag.name
         3: entity.tag.name
-        4: punctuation.section.embedded.end.ul4
+        4: punctuation.definition.comment.ul4
       pop: true
 
   tag_ul4:
