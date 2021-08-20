@@ -168,6 +168,12 @@ contexts:
         2: entity.name.tag.ul4
         3: punctuation.section.embedded.end.ul4
 
+    - match: (<\?)\s*(renderx)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_renderx
+
     - match: (<\?)\s*(render)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
@@ -359,6 +365,14 @@ contexts:
 
   tag_render:
     - meta_scope: meta.embedded.block.ul4.render
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_renderx:
+    - meta_scope: meta.embedded.block.ul4.renderx
     - include: expr
     - match: (\?>)
       captures:
