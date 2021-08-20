@@ -26,6 +26,13 @@ contexts:
         2: entity.name.tag.ul4
       push: tag_note
 
+    - match: (<\?)\s*(ignore)\s*(\?>)
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: punctuation.section.embedded.end.ul4
+      push: tag_ignore
+
     - match: (<\?)\s*(whitespace)\s+((keep|strip|smart)|(.*))(\?>)
       scope: meta.embedded.block.ul4.whitespace
       captures:
@@ -303,6 +310,23 @@ contexts:
     - match: (\?>)
       captures:
         1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_ignore:
+    - meta_scope: comment.block.ignore.ul4
+    - match: (<\?)\s*(ignore)\s*(\?>)
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.tag.name
+        3: punctuation.section.embedded.end.ul4
+      push: tag_ignore
+
+    - match: (<\?)\s*(end)\s+(ignore)\s*(\?>)
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.tag.name
+        3: entity.tag.name
+        4: punctuation.section.embedded.end.ul4
       pop: true
 
   tag_ul4:
