@@ -74,6 +74,14 @@ contexts:
         3: entity.name.tag.ul4
         4: punctuation.section.embedded.end.ul4
 
+    - match: (<\?)\s*(end)\s+(while)(\?>)
+      scope: meta.embedded.block.ul4.end.while
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+        3: entity.name.tag.ul4
+        4: punctuation.section.embedded.end.ul4
+
     - match: (<\?)\s*(end)\s+(if)(\?>)
       scope: meta.embedded.block.ul4.endif.
       captures:
@@ -134,6 +142,12 @@ contexts:
         1: punctuation.section.embedded.begin.ul4
         2: entity.name.tag.ul4
       push: tag_for
+
+    - match: (<\?)\s*(while)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: entity.name.tag.ul4
+      push: tag_while
 
     - match: (<\?)\s*(if)\b
       captures:
@@ -301,6 +315,14 @@ contexts:
 
   tag_for:
     - meta_scope: meta.embedded.block.ul4.for
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_while:
+    - meta_scope: meta.embedded.block.ul4.while
     - include: expr
     - match: (\?>)
       captures:
