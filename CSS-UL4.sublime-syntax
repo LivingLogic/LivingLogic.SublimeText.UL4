@@ -3,6 +3,7 @@
 name: CSS (UL4)
 file_extensions: [cssul4]
 scope: embedding.css.ul4
+version: 2
 
 contexts:
   main:

@@ -4,6 +4,7 @@ name: UL4
 file_extensions: [ul4]
 first_line_match: <\?\s*ul4\s+.*\?>
 scope: source.ul4
+version: 2
 
 contexts:
   main:

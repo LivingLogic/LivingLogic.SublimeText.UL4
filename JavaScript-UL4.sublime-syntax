@@ -3,6 +3,7 @@
 name: JavaScript (UL4)
 file_extensions: [jsul4]
 scope: embedding.js.ul4
+version: 2
 
 contexts:
   main:

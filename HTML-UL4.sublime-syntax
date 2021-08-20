@@ -3,6 +3,7 @@
 name: HTML (UL4)
 file_extensions: [htmlul4]
 scope: embedding.html.ul4
+version: 2
 
 contexts:
   main:
