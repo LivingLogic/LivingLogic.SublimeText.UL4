@@ -255,7 +255,7 @@ contexts:
       captures:
         1: constant.other.color.rgb-value.ul4
 
-    - match: (@\(\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(\d{2}(\.\d{6})?)?)?\))
+    - match: (@\(\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d{6})?)?)?\))
       captures:
         1: constant.other.date.ul4
 
