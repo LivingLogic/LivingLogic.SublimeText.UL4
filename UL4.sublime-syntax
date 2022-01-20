@@ -271,15 +271,23 @@ contexts:
       captures:
         1: constant.language.bool.ul4
 
-    - match: (\+|-|\*|//|/|%|<<|>>)
-      captures:
-        1: keyword.operator.arithmetic.ul4
-
-    - match: (\+=|-=|\*=|//=|/=|%=|<<=|>>=|=)
+    - match: (\+=|-=|\*=|//=|/=|%=|<<=|>>=|&=|\|=|\^=|=)
       captures:
         1: keyword.operator.assignment.ul4
 
-    - match: (,|\.)
+    - match: (\+|-|\*|//|/|%)
+      captures:
+        1: keyword.operator.arithmetic.ul4
+
+    - match: (&|\^|~|<<|>>)
+      captures:
+        1: keyword.operator.binary.ul4
+
+    - match: (==|!=|<|>|<=|>=)
+      captures:
+        1: keyword.operator.comparison.ul4
+
+    - match: (,|\.|:)
       captures:
         1: keyword.operator.other.ul4
 
