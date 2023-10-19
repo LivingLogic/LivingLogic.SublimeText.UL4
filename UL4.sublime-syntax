@@ -15,17 +15,27 @@ contexts:
         3: entity.name.function.ul4
       push: tag_ul4
 
-    - match: (<\?)\s*(doc)\b
+    - match: (<\?)\s*(doc)\s*(\?>)
       captures:
         1: punctuation.definition.comment.ul4
         2: comment.block.documentation.doc.ul4
-      push: tag_doc
+        3: punctuation.definition.comment.ul4
+      push: tag_long_doc
 
-    - match: (<\?)\s*(note)\b
+    - match: (<\?\s*doc.*?\b\?>)
+      captures:
+        1: comment.block.documentation.doc.ul4
+
+    - match: (<\?)\s*(note)\s*(\?>)
       captures:
         1: punctuation.definition.comment.ul4
         2: comment.block.note.ul4
-      push: tag_note
+        3: punctuation.definition.comment.ul4
+      push: tag_long_note
+
+    - match: (<\?\s*note.*?\b\?>)
+      captures:
+        1: comment.block.note.ul4
 
     - match: (<\?)\s*(ignore)\s*(\?>)
       captures:
@@ -317,18 +327,36 @@ contexts:
     - match: '"'
       push: string2
 
-  tag_doc:
+  tag_long_doc:
     - meta_scope: comment.block.documentation.ul4, meta.embedded.block.ul4.doc
-    - match: (\?>)
+    - match: (<\?)\s*(doc)\s*(\?>)
       captures:
         1: punctuation.definition.comment.ul4
+        2: entity.tag.name
+        3: punctuation.definition.comment.ul4
+      push: tag_long_doc
+    - match: (<\?)\s*(end)\s+(doc)\s*(\?>)
+      captures:
+        1: punctuation.definition.comment.ul4
+        2: entity.tag.name
+        3: entity.tag.name
+        4: punctuation.definition.comment.ul4
       pop: true
 
-  tag_note:
+  tag_long_note:
     - meta_scope: comment.block.ul4, meta.embedded.block.ul4.note
-    - match: (\?>)
+    - match: <\?\s*note\s*\?>
       captures:
         1: punctuation.definition.comment.ul4
+        2: entity.tag.name
+        3: punctuation.definition.comment.ul4
+      push: tag_long_note
+    - match: <\?\s*end\s+note\s*\?>
+      captures:
+        1: punctuation.definition.comment.ul4
+        2: entity.tag.name
+        3: entity.tag.name
+        4: punctuation.definition.comment.ul4
       pop: true
 
   tag_ignore:
