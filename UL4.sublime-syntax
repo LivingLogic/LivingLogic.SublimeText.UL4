@@ -202,6 +202,12 @@ contexts:
         2: keyword.other.render.ul4
       push: tag_render
 
+    - match: (<\?)\s*(renderx?_or_printx?)\b
+      captures:
+        1: punctuation.section.embedded.begin.ul4
+        2: keyword.other.render_or_print.ul4
+      push: tag_renderorprint
+
     - match: (<\?)\s*(return)\b
       captures:
         1: punctuation.section.embedded.begin.ul4
@@ -416,6 +422,14 @@ contexts:
 
   tag_elif:
     - meta_scope: meta.embedded.block.ul4.elif
+    - include: expr
+    - match: (\?>)
+      captures:
+        1: punctuation.section.embedded.end.ul4
+      pop: true
+
+  tag_renderorprint:
+    - meta_scope: meta.embedded.block.ul4.renderorprint
     - include: expr
     - match: (\?>)
       captures:
