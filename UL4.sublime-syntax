@@ -22,7 +22,7 @@ contexts:
         3: punctuation.definition.comment.ul4
       push: tag_long_doc
 
-    - match: (<\?\s*doc.*?\b\?>)
+    - match: (<\?\s*doc.*?\?>)
       captures:
         1: comment.block.documentation.doc.ul4
 
@@ -33,7 +33,7 @@ contexts:
         3: punctuation.definition.comment.ul4
       push: tag_long_note
 
-    - match: (<\?\s*note.*?\b\?>)
+    - match: (<\?\s*note.*?\?>)
       captures:
         1: comment.block.note.ul4
 
