@@ -8,6 +8,12 @@ It supports plain UL4, or UL4 embedded in HTML, CSS, JavaScript or XML files.
 
 ## Versions
 
+### 1.0.2 (2023-11-20)
+
+Added `LICENSE`.
+
+Fixed rule for non-nested `<?doc?>` and `<?note?>` tags.
+
 ### 1.0.1 (2023-10-19)
 
 Added `README.md`.
@@ -15,4 +21,3 @@ Added `README.md`.
 ### 1.0.0 (2023-10-19)
 
 Initial release.
-
